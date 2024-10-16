@@ -1,0 +1,377 @@
+//1ST TIME
+/**import java.util.Scanner;
+
+public class WomenSafetyApp {
+
+    private static void callEmergencyServices() {
+        System.out.println("Calling 911 for emergency services.");
+        // Code to make a call to emergency services (Mock implementation)
+    }
+
+    private static void sendSOSAlert() {
+        System.out.println("Sending SOS alert to emergency contacts.");
+        // Code to send SOS alert to emergency contacts (Mock implementation)
+    }
+
+    private static void enableLocationTracking() {
+        System.out.println("Location tracking enabled.");
+        // Code to enable location tracking (Mock implementation)
+    }
+
+    private static void locationBasedAlerts() {
+        System.out.println("Checking user's current location for potential risks...");
+        // Code to determine if the user is in an unsafe location and trigger alerts
+        boolean isInUnsafeLocation = checkLocationSafety();
+
+        if (isInUnsafeLocation) {
+            System.out.println("Alerting emergency contacts about the user's unsafe location.");
+            // Code to send alerts to emergency contacts
+        } else {
+            System.out.println("User is in a safe location.");
+        }
+    }
+
+    private static boolean checkLocationSafety() {
+        // Mock implementation to determine if the user is in an unsafe location
+        // This can involve checking against a predefined list of unsafe locations or geofencing
+        return false; // Assume user is in a safe location for demonstration
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Welcome to Women's Safety App!");
+
+        while (true) {
+            System.out.println("Select an option:");
+            System.out.println("1. Call Emergency Services");
+            System.out.println("2. Send SOS Alert to Emergency Contacts");
+            System.out.println("3. Enable Location Tracking");
+            System.out.println("4. Check Location-Based Alerts");
+            System.out.println("5. Exit");
+
+            int option = scanner.nextInt();
+
+            switch (option) {
+                case 1:
+                    callEmergencyServices();
+                    break;
+                case 2:
+                    sendSOSAlert();
+                    break;
+                case 3:
+                    enableLocationTracking();
+                    break;
+                case 4:
+                    locationBasedAlerts();
+                    break;
+                case 5:
+                    System.out.println("Exiting Women's Safety App.");
+                    System.exit(0);
+                default:
+                    System.out.println("Invalid option. Please try again.");
+            }
+        }
+    }
+}
+*/
+
+//2ST TIME
+/**public class WomenSafetyApp2 {
+    // Define the coordinates of the danger zone
+    private static final double DANGER_ZONE_LAT = 40.7128; // Example latitude of the danger zone
+    private static final double DANGER_ZONE_LONG = -74.0060; // Example longitude of the danger zone
+    private static final double DANGER_ZONE_RADIUS = 1.0; // Example radius of the danger zone in kilometers
+
+    // Function to check if the user is in the danger zone
+    private static boolean isInDangerZone(double userLat, double userLong) {
+        double distance = calculateDistance(userLat, userLong, DANGER_ZONE_LAT, DANGER_ZONE_LONG);
+        return distance <= DANGER_ZONE_RADIUS;
+    }
+
+    // Function to calculate distance between two locations (using Haversine formula)
+    private static double calculateDistance(double lat1, double long1, double lat2, double long2) {
+        double earthRadius = 6371; // Radius of the Earth in kilometers
+        double dLat = Math.toRadians(lat2 - lat1);
+        double dLong = Math.toRadians(long2 - long1);
+
+        double a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2)) *
+                Math.sin(dLong / 2) * Math.sin(dLong / 2);
+
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        return earthRadius * c;
+    }
+
+    // Check if the user's phone is switched on
+    private static boolean isPhoneSwitchedOn() {
+        // Simulating the phone status
+        return true; // Assume the phone is switched on
+    }
+
+    // Notify emergency contacts
+    private static void notifyEmergencyContacts(String message) {
+        // Code to notify the emergency contacts via SMS, call, or any preferred method
+        System.out.println("Emergency contacts notified: " + message);
+    }
+
+    public static void main(String[] args) {
+        // Simulated user's current location
+        double userCurrentLat = 40.71;
+        double userCurrentLong = -74.00;
+
+        // Check if the user is in the danger zone and the phone is switched on
+        if (isInDangerZone(userCurrentLat, userCurrentLong) && isPhoneSwitchedOn()) {
+            String message = "User is in the danger zone!";
+            notifyEmergencyContacts(message);
+        }
+    }
+}*/
+/**IN THIS CODE , CAN YOU ADD IF PHONE IS SWITCH WHO IS INSTALL IS APP THAT PERSON GET MESSAGE PERSON IS DANGER ZONE */
+
+//3RD TIME
+
+/**import java.util.Scanner;
+
+public class WomenSafetyApp3 {
+    // Define the coordinates of the danger zone
+    private static double dangerZoneLat;
+    private static double dangerZoneLong;
+    private static final double DANGER_ZONE_RADIUS = 1.0; // Example radius of the danger zone in kilometers
+
+    private static void callEmergencyServices() {
+        System.out.println("Calling 911 for emergency services.");
+        // Code to make a call to emergency services (Mock implementation)
+    }
+
+    private static void sendSOSAlert() {
+        System.out.println("Sending SOS alert to emergency contacts.");
+        // Code to send SOS alert to emergency contacts (Mock implementation)
+    }
+
+    private static void enableLocationTracking() {
+        System.out.println("Location tracking enabled.");
+        // Code to enable location tracking (Mock implementation)
+    }
+    
+    private static void setDangerZone(Scanner scanner) {
+        System.out.println("Enter latitude of the danger zone:");
+        dangerZoneLat = scanner.nextDouble();
+        System.out.println("Enter longitude of the danger zone:");
+        dangerZoneLong = scanner.nextDouble();
+        System.out.println("Danger zone has been set to: (" + dangerZoneLat + ", " + dangerZoneLong + ")");
+    }
+
+    private static void locationBasedAlerts() {
+        System.out.println("Checking user's current location for potential risks...");
+        // Code to determine if the user is in an unsafe location and trigger alerts
+        boolean isInUnsafeLocation = checkLocationSafety();
+
+        if (isInUnsafeLocation && isPhoneSwitchedOn()) {
+            String message = "User is in the danger zone!";
+            notifyEmergencyContacts(message);
+        } else {
+            System.out.println("User is in a safe location.");
+        }
+    }
+
+    private static boolean checkLocationSafety() {
+        // Mock implementation to determine if the user is in an unsafe location
+        // Here we will compare the user's current location with the defined danger zone
+        // For simplicity, let's use a direct distance check
+        double userCurrentLat = 40.71; // Simulated user's current latitude
+        double userCurrentLong = -74.00; // Simulated user's current longitude
+        double distance = calculateDistance(userCurrentLat, userCurrentLong, dangerZoneLat, dangerZoneLong);
+        return distance <= DANGER_ZONE_RADIUS;
+    }
+
+    private static double calculateDistance(double lat1, double long1, double lat2, double long2) {
+        // Implementation to calculate distance between two geographical points using Haversine formula
+        // This is the same distance calculation function used in the previous example
+        return 0.0; // Placeholder return value
+    }
+
+    private static boolean isPhoneSwitchedOn() {
+        // Simulating the phone status
+        return true; // Assume the phone is switched on
+    }
+
+    private static void notifyEmergencyContacts(String message) {
+        // Code to notify the emergency contacts via SMS, call, or any preferred method
+        System.out.println("Emergency contacts notified: " + message);
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Welcome to Women's Safety App!");
+
+        while (true) {
+            System.out.println("Select an option:");
+            System.out.println("1. Call Emergency Services");
+            System.out.println("2. Send SOS Alert to Emergency Contacts");
+            System.out.println("3. Enable Location Tracking");
+            System.out.println("4. Set Danger Zone");
+            System.out.println("5. Check Location-Based Alerts");
+            System.out.println("6. Exit");
+
+            int option = scanner.nextInt();
+
+            switch (option) {
+                case 1:
+                    callEmergencyServices();
+                    break;
+                case 2:
+                    sendSOSAlert();
+                    break;
+                case 3:
+                    enableLocationTracking();
+                    break;
+                case 4:
+                    setDangerZone(scanner);
+                    break;
+                case 5:
+                    locationBasedAlerts();
+                    break;
+                case 6:
+                    System.out.println("Exiting Women's Safety App.");
+                    System.exit(0);
+                default:
+                    System.out.println("Invalid option. Please try again.");
+            }
+        }
+    }
+}
+*/
+
+/**IN THIS CODE , CAN YOU ADD IF PHONE IS SWITCH WHO IS INSTALL IS APP THAT PERSON GET MESSAGE PERSON IS DANGER ZONE */
+
+
+
+//4TH TIMES
+import java.util.Scanner;
+
+public class WomenSafetyApp4 {
+    private static boolean isRunning = false;
+
+    private static void callEmergencyServices() {
+        System.out.println("Calling 911 for emergency services.");
+        // Code to make a call to emergency services (Mock implementation)
+    }
+
+    private static void sendSOSAlert() {
+        System.out.println("Sending SOS alert to emergency contacts.");
+        // Code to send SOS alert to emergency contacts (Mock implementation)
+    }
+
+    private static void enableLocationTracking() {
+        System.out.println("Location tracking enabled.");
+        // Code to enable location tracking (Mock implementation)
+    }
+    
+    private static void setDangerZone(Scanner scanner) {
+        // Danger zone setup code remains the same as before
+    }
+
+    private static void locationBasedAlerts() {
+        // Location-based alerts logic remains the same as before
+    }
+
+    private static void startRunning() {
+        isRunning = true;
+        System.out.println("User started running. Alerting emergency contacts...");
+        sendSOSAlert();
+    }
+
+    private static void userFeelsSafe() {
+        isRunning = false;
+        System.out.println("User feels safe. Alert canceled.");
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Welcome to Women's Safety App!");
+
+        while (true) {
+            System.out.println("Select an option:");
+            System.out.println("1. Call Emergency Services");
+            System.out.println("2. Send SOS Alert to Emergency Contacts");
+            System.out.println("3. Enable Location Tracking");
+            System.out.println("4. Set Danger Zone");
+            System.out.println("5. Check Location-Based Alerts");
+            System.out.println("6. Start Running");
+            System.out.println("7. User Feels Safe");
+            System.out.println("8. Exit");
+
+            int option = scanner.nextInt();
+
+            switch (option) {
+                case 1:
+                    callEmergencyServices();
+                    break;
+                case 2:
+                    sendSOSAlert();
+                    break;
+                case 3:
+                    enableLocationTracking();
+                    break;
+                case 4:
+                    setDangerZone(scanner);
+                    break;
+                case 5:
+                    locationBasedAlerts();
+                    break;
+                case 6:
+                    if (!isRunning) {
+                        startRunning();
+                    } else {
+                        System.out.println("Warning: Alert already active due to running.");
+                    }
+                    break;
+                case 7:
+                    if (isRunning) {
+                        userFeelsSafe();
+                    } else {
+                        System.out.println("No alert to cancel.");
+                    }
+                    break;
+                case 8:
+                    System.out.println("Exiting Women's Safety App.");
+                    System.exit(0);
+                default:
+                    System.out.println("Invalid option. Please try again.");
+            }
+        }
+    }
+}
+/**CAN WE ADD THESE FEATURES? If the person who downloaded the app, the pass alert or call message of the people started running automatically 
+and the phone user is feeling danger then it won't happen.*/
+
+
+
+
+
+
+
+
+
+
+The Women's Safety App is designed to provide a sense of security and emergency assistance to its users, especially in vulnerable situations. The core features of the app include the ability to call emergency services, send SOS alerts to designated emergency contacts, enable location tracking, and check for location-based alerts. The app is written in Java and employs a console-based user interface for simplicity.
+
+Here's a breakdown of the key features and how they work:
+
+Call Emergency Services: This feature allows the user to quickly initiate a call to emergency services (e.g., 911) in case of a critical situation.
+
+Send SOS Alert to Emergency Contacts: The app enables users to send an SOS alert to their preconfigured emergency contacts, notifying them of a potentially dangerous or distressing situation.
+
+Enable Location Tracking: Users can opt to activate location tracking, which could be used for real-time location updates, especially during an emergency.
+
+Location-Based Alerts: The app checks the user's current location for potential risks and triggers alerts if the user is in an unsafe location, adding an extra layer of security.
+
+The app provides a user-friendly interface where the user can interact by selecting options through the console. Upon selecting an option, the app executes the corresponding functionality and displays relevant output to inform the user of the action taken.
+
+The structure of the app ensures that users can quickly access emergency services and notify their trusted contacts about their situation, while also providing additional security through location-based alerts.
+
+In a real-world deployment, the app could be further enhanced with additional features such as real-time location sharing, voice command support, and direct communication with emergency services. Additionally, user interfaces could be expanded to include mobile app development for a sleek and accessible experience.
+
+
